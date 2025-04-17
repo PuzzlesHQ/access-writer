@@ -30,6 +30,8 @@ public class AccessWriters {
     private static final Map<String, IFormat> formatMap = new HashMap<>();
 
     public static void init(ClassLoader loader) {
+        MERGED.clear();
+
         initDefaultFormats();
 
         if (loader == null) return;

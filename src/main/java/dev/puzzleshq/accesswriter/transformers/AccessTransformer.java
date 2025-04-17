@@ -10,7 +10,7 @@ public class AccessTransformer extends ClassVisitor {
 
     String className;
 
-    protected AccessTransformer(ClassVisitor classVisitor) {
+    public AccessTransformer(ClassVisitor classVisitor) {
         super(Opcodes.ASM9, classVisitor);
     }
 

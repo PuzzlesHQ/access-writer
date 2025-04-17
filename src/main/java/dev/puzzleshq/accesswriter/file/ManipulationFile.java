@@ -67,4 +67,10 @@ public class ManipulationFile {
         if (access == null) return ClassAccess.ACC_DO_NOTHING;
         return access;
     }
+
+    public void clear() {
+        classModificationMap.clear();
+        fieldModificationMap.clear();
+        methodModificationMap.clear();
+    }
 }
