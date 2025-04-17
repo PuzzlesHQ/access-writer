@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group = 'dev.puzzleshq'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.ow2.asm:asm:$asm_version"
+    implementation "org.ow2.asm:asm-tree:$asm_version"
+    implementation "org.ow2.asm:asm-util:$asm_version"
+    implementation "org.ow2.asm:asm-analysis:$asm_version"
+    implementation "org.ow2.asm:asm-commons:$asm_version"
+}
+
+wrapper {
+    gradleVersion = "8.5"
+    distributionType = Wrapper.DistributionType.ALL
+}
+
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
