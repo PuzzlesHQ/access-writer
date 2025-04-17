@@ -1,6 +1,6 @@
 package dev.puzzleshq.accesswriter;
 
-import dev.puzzleshq.accesswriter.api.IFormat;
+import dev.puzzleshq.accesswriter.api.IWriterFormat;
 import dev.puzzleshq.accesswriter.api.IFileReader;
 import dev.puzzleshq.accesswriter.api.IRemapper;
 import dev.puzzleshq.accesswriter.api.impl.format.AccessManipulatorFormat;
@@ -27,7 +27,7 @@ public class AccessWriters {
     private static IFileReader reader;
     private static IRemapper remapper = new NullRemapper();
 
-    private static final Map<String, IFormat> formatMap = new HashMap<>();
+    private static final Map<String, IWriterFormat> formatMap = new HashMap<>();
 
     public static void init(ClassLoader loader) {
         MERGED.clear();
@@ -56,11 +56,11 @@ public class AccessWriters {
     /**
      * @param extension The extension of the file that is format applies to .cfg, .accesswidener, .manipulator
      */
-    public static void register(String extension, IFormat format) {
+    public static void register(String extension, IWriterFormat format) {
         formatMap.put(extension, format);
     }
 
-    public IFormat getFormat(String fileName) {
+    public IWriterFormat getFormat(String fileName) {
         String[] parts = fileName.split("\\.");
         return formatMap.get(".".concat(parts[parts.length - 1]));
     }

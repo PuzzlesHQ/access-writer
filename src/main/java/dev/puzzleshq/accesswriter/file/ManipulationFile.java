@@ -1,7 +1,7 @@
 package dev.puzzleshq.accesswriter.file;
 
 import dev.puzzleshq.accesswriter.AccessWriters;
-import dev.puzzleshq.accesswriter.api.IFormat;
+import dev.puzzleshq.accesswriter.api.IWriterFormat;
 import dev.puzzleshq.accesswriter.util.ClassAccess;
 
 import java.util.HashMap;
@@ -15,13 +15,13 @@ import java.util.Map;
  */
 public class ManipulationFile {
 
-    IFormat format;
+    IWriterFormat format;
 
-    public ManipulationFile(IFormat format) {
+    public ManipulationFile(IWriterFormat format) {
         this.format = format;
     }
 
-    public IFormat getFormat() {
+    public IWriterFormat getFormat() {
         return format;
     }
 

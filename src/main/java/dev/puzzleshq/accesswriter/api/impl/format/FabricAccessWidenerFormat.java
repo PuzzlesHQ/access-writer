@@ -1,13 +1,13 @@
 package dev.puzzleshq.accesswriter.api.impl.format;
 
 import dev.puzzleshq.accesswriter.file.ManipulationFile;
-import dev.puzzleshq.accesswriter.api.IFormat;
+import dev.puzzleshq.accesswriter.api.IWriterFormat;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FabricAccessWidenerFormat implements IFormat {
+public class FabricAccessWidenerFormat implements IWriterFormat {
 
     ManipulationFile file;
 

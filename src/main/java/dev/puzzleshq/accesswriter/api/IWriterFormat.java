@@ -8,7 +8,7 @@ import dev.puzzleshq.accesswriter.file.ManipulationFile;
  * @since 1.0.0
  * @author Mr-Zombii
  */
-public interface IFormat {
+public interface IWriterFormat {
 
     /**
      * @param contents The contents of a manipulator file that are to be parsed.
