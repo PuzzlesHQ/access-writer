@@ -7,7 +7,7 @@ import dev.puzzleshq.accesswriter.api.impl.format.AccessManipulatorFormat;
 import dev.puzzleshq.accesswriter.api.impl.format.FabricAccessWidenerFormat;
 import dev.puzzleshq.accesswriter.api.impl.format.ForgeAccessTransformerFormat;
 import dev.puzzleshq.accesswriter.api.impl.remapping.NullRemapper;
-import dev.puzzleshq.accesswriter.file.ManipulationFile;
+import dev.puzzleshq.accesswriter.file.MergedManipulationFile;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class AccessWriters {
 
-    public static final ManipulationFile MERGED = new ManipulationFile(null);
+    public static final MergedManipulationFile MERGED = new MergedManipulationFile();
 
     private static IFileReader reader;
     private static IRemapper remapper = new NullRemapper();
