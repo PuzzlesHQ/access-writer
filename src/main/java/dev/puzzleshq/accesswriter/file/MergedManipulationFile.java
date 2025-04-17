@@ -1,8 +1,8 @@
 package dev.puzzleshq.accesswriter.file;
 
-// TODO: Document Class
-
 /**
+ * Combines all the ManipulationFile.
+ *
  * @since 1.0.0
  * @author Mr-Zombii
  */
@@ -12,6 +12,10 @@ public class MergedManipulationFile extends ManipulationFile {
         super(null);
     }
 
+    /**
+     * Adds the {@link ManipulationFile} to this.
+     * @param file the {@link ManipulationFile} to be added.
+     */
     public void add(ManipulationFile file) {
         this.classModificationMap.putAll(file.classModificationMap);
         this.fieldModificationMap.putAll(file.fieldModificationMap);

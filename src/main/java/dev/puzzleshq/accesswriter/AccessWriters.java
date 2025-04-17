@@ -14,8 +14,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO: Document Class
-
 /**
  * @since 1.0.0
  * @author Mr-Zombii
@@ -29,6 +27,10 @@ public class AccessWriters {
 
     private static final Map<String, IWriterFormat> formatMap = new HashMap<>();
 
+    /**
+     * Initialises accessWriter.
+     * @param loader the {@link ClassLoader} you are using.
+     */
     public static void init(ClassLoader loader) {
         MERGED.clear();
 
@@ -45,34 +47,61 @@ public class AccessWriters {
         }
     }
 
+    /**
+     * Registers the FileReader to be used.
+     * @param reader the fileReader to register.
+     * @see IFileReader
+     */
     public static void register(IFileReader reader) {
         AccessWriters.reader = reader;
     }
 
+    /**
+     * Registers the Remapper to be used.
+     * @param remapper the fileReader to register.
+     * @see IRemapper
+     */
     public static void register(IRemapper remapper) {
         AccessWriters.remapper = remapper;
     }
 
     /**
-     * @param extension The extension of the file that is format applies to .cfg, .accesswidener, .manipulator
+     * Registers format to be used for the file extension.
+     * @param extension The extension of the file that is format applies to .cfg, .accesswidener, .manipulator.
+     * @see IWriterFormat
      */
     public static void register(String extension, IWriterFormat format) {
         formatMap.put(extension, format);
     }
 
+    /**
+     * Gets the format of the file.
+     * @param fileName the full name of the file.
+     */
     public IWriterFormat getFormat(String fileName) {
         String[] parts = fileName.split("\\.");
         return formatMap.get(".".concat(parts[parts.length - 1]));
     }
 
+    /**
+     * Gets the registered remapper.
+     * @see AccessWriters#register(IRemapper)
+     */
     public static IRemapper getRemapper() {
         return remapper;
     }
 
+    /**
+     * Gets the registered reader.
+     * @see AccessWriters#register(IFileReader)
+     */
     public static IFileReader getReader() {
         return reader;
     }
 
+    /**
+     * Initialises the default formats.
+     */
     public static void initDefaultFormats() {
         register(".manipulator", new AccessManipulatorFormat());
         register(".cfg", new ForgeAccessTransformerFormat());
