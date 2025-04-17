@@ -21,7 +21,7 @@ public class FabricAccessWidenerFormat implements IFormat {
         while (scanner.hasNextLine()) lines.add(scanner.nextLine());
 
         for (String line : lines) {
-            if (line.isBlank() || line.startsWith("#")) continue;
+            if (line.isBlank() || line.startsWith("#") || line.startsWith("accessWidener")) continue;
 
             String[] parts = line.split(" ");
 
