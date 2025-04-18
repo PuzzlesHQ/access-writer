@@ -9,6 +9,11 @@ plugins {
 def ref = System.getenv("GITHUB_REF")
 def githubVersion = (ref != null && ref.startsWith("refs/tags/")) ? ref.tokenize('/').last().replaceFirst(/^v/, '') : p_version
 
+String mavenUrl = System.getenv("MAVEN_URL")
+
+String envRepo = System.getenv("MAVEN_REPO");
+String mavenRepo = envRepo != null ? envRepo : "releases";
+
 repositories {
     mavenCentral()
 }
@@ -30,7 +35,7 @@ publishing {
     repositories {
         maven {
             name = "myTestRepository"
-            url = "https://ba0e-2a0a-ef40-2f-f401-18a2-417d-de44-afda.ngrok-free.app/releases"
+            url = mavenUrl+ "/" +mavenRepo
             credentials {
                 username = System.getenv("MAVEN_NAME")
                 password = System.getenv("MAVEN_SECRET")
