@@ -26,15 +26,15 @@ dependencies {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = 'dev.puzzleshq'
-            artifactId = 'access-writer'
+            groupId = p_group
+            artifactId = p_id
 
             from components.java
 
             pom {
-                name = "Access Writer"
-                description = "A new snazzy version of access manipulation with improved support for wideners, transformers, & manipulators."
-                url = "https://github.com/PuzzlesHQ/access-writer"
+                name = p_name
+                description = p_desc
+                url = p_git
 
                 licenses {
                     license {
@@ -53,9 +53,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection = "https://github.com/PuzzlesHQ/access-writer.git"
-                    developerConnection = "https://github.com/PuzzlesHQ/access-writer.git"
-                    url = "https://github.com/PuzzlesHQ/access-writer"
+                    connection = "${p_git}.git"
+                    developerConnection = "${p_git}.git"
+                    url = "${p_git}.git"
                 }
             }
         }
@@ -63,7 +63,6 @@ publishing {
 }
 
 signing {
-//    useGpgCmd()
     sign(publishing.publications[0])
 }
 
