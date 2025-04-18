@@ -1,10 +1,12 @@
+import java.lang.reflect.Field
+
 plugins {
     id 'java'
     id 'maven-publish'
     id("io.github.sgtsilvio.gradle.maven-central-publishing") version "0.4.0"
 }
 
-version = '1.0.1'
+version = System.getenv("GITHUB_REF")?.substringAfterLast('/')?.removePrefix("v") ?: p_version
 
 repositories {
     mavenCentral()
@@ -60,10 +62,6 @@ publishing {
             }
         }
     }
-}
-
-signing {
-    sign(publishing.publications[0])
 }
 
 wrapper {
