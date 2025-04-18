@@ -31,7 +31,10 @@ publishing {
         maven {
             name = "myTestRepository"
             url = "https://ba0e-2a0a-ef40-2f-f401-18a2-417d-de44-afda.ngrok-free.app/releases"
-            credentials(PasswordCredentials)
+            credentials {
+                username = findProperty("mavenUsername") ?: System.getenv("MAVEN_NAME")
+                password = findProperty("mavenPassword") ?: System.getenv("MAVEN_SECRET")
+            }
             authentication {
                 basic(BasicAuthentication)
             }
