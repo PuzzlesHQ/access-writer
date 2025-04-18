@@ -1,7 +1,6 @@
 package dev.puzzleshq.accesswriter;
 
 import dev.puzzleshq.accesswriter.api.IWriterFormat;
-import dev.puzzleshq.accesswriter.api.IFileReader;
 import dev.puzzleshq.accesswriter.api.IRemapper;
 import dev.puzzleshq.accesswriter.api.impl.format.AccessManipulatorFormat;
 import dev.puzzleshq.accesswriter.api.impl.format.FabricAccessWidenerFormat;
@@ -22,7 +21,6 @@ public class AccessWriters {
 
     public static final MergedManipulationFile MERGED = new MergedManipulationFile();
 
-    private static IFileReader reader;
     private static IRemapper remapper = new NullRemapper();
 
     private static final Map<String, IWriterFormat> formatMap = new HashMap<>();
@@ -48,15 +46,6 @@ public class AccessWriters {
     }
 
     /**
-     * Registers the FileReader to be used.
-     * @param reader the fileReader to register.
-     * @see IFileReader
-     */
-    public static void register(IFileReader reader) {
-        AccessWriters.reader = reader;
-    }
-
-    /**
      * Registers the Remapper to be used.
      * @param remapper the fileReader to register.
      * @see IRemapper
@@ -77,8 +66,10 @@ public class AccessWriters {
     /**
      * Gets the format of the file.
      * @param fileName the full name of the file.
+     *
+     * @return {@link IWriterFormat}
      */
-    public IWriterFormat getFormat(String fileName) {
+    public static IWriterFormat getFormat(String fileName) {
         String[] parts = fileName.split("\\.");
         return formatMap.get(".".concat(parts[parts.length - 1]));
     }
@@ -86,17 +77,11 @@ public class AccessWriters {
     /**
      * Gets the registered remapper.
      * @see AccessWriters#register(IRemapper)
+     *
+     * @return {@link IRemapper}
      */
     public static IRemapper getRemapper() {
         return remapper;
-    }
-
-    /**
-     * Gets the registered reader.
-     * @see AccessWriters#register(IFileReader)
-     */
-    public static IFileReader getReader() {
-        return reader;
     }
 
     /**

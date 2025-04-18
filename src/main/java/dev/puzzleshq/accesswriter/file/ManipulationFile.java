@@ -23,6 +23,8 @@ public class ManipulationFile {
 
     /**
      * Gets the format of the ManipulationFile.
+     *
+     * @return {@link IWriterFormat}
      */
     public IWriterFormat getFormat() {
         return format;
@@ -71,6 +73,8 @@ public class ManipulationFile {
     /**
      * Checks if the ManipulationFile has the class/method/field.
      * @param name the full path.
+     *
+     * @return status of class existence inside of manipulation file.
      */
     public boolean has(String name) {
         name = AccessWriters.getRemapper().remap(name);
@@ -122,4 +126,25 @@ public class ManipulationFile {
         fieldModificationMap.clear();
         methodModificationMap.clear();
     }
+
+    /**
+     * Reads a string to a manipulation file.
+     * @param contents the contents of the manipulator.
+     * @param name the file name for file extension extraction.
+     * @param merge tick for the optional auto merging with the AccessWriters.MERGED manipulator.
+     *
+     * @see MergedManipulationFile
+     */
+    public static ManipulationFile readFromString(String contents, String name, boolean merge) {
+        IWriterFormat format = AccessWriters.getFormat(getExt(name));
+        ManipulationFile file = format.parse(contents);
+        if (merge) AccessWriters.MERGED.add(file);
+        return file;
+    }
+
+    private static String getExt(String name) {
+        String[] parts = name.split("\\.");
+        return "." + parts[parts.length - 1];
+    }
+
 }

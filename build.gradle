@@ -1,12 +1,18 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id("io.github.sgtsilvio.gradle.maven-central-publishing") version "0.4.0"
 }
 
-version = '1.0.0'
+version = '1.0.1'
 
 repositories {
     mavenCentral()
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 dependencies {
@@ -17,34 +23,48 @@ dependencies {
     implementation "org.ow2.asm:asm-commons:$asm_version"
 }
 
-tasks.register("sourcesJar", Jar) {
-    from sourceSets.main.allSource
-
-    archiveClassifier = 'sources'
-}
-
-tasks.register("javadocJar", Jar) {
-    group = "buildSrc"
-    from javadoc
-
-    archiveClassifier = 'javadoc'
-}
-
-javadoc {
-    source = sourceSets.main.allJava
-}
-
 publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'dev.puzzleshq'
             artifactId = 'access-writer'
 
-            artifact source: jar, extension: 'jar'
-            artifact source: javadocJar, classifier: 'javadoc', extension: 'jar'
-            artifact source: sourcesJar, classifier: 'sources', extension: 'jar'
+            from components.java
+
+            pom {
+                name = "Access Writer"
+                description = "A new snazzy version of access manipulation with improved support for wideners, transformers, & manipulators."
+                url = "https://github.com/PuzzlesHQ/access-writer"
+
+                licenses {
+                    license {
+                        name = "GNU Lesser General Public License"
+                        url = "https://www.gnu.org/licenses/lgpl-2.1.html"
+                        distribution = "LGPL"
+                        comments = "This project includes LGPL-licensed components."
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'mrzombii'
+                        name = 'Mr Zombii'
+                        email = 'thezombiigames@gmail.com'
+                    }
+                }
+                scm {
+                    connection = "https://github.com/PuzzlesHQ/access-writer.git"
+                    developerConnection = "https://github.com/PuzzlesHQ/access-writer.git"
+                    url = "https://github.com/PuzzlesHQ/access-writer"
+                }
+            }
         }
     }
+}
+
+signing {
+//    useGpgCmd()
+    sign(publishing.publications[0])
 }
 
 wrapper {
