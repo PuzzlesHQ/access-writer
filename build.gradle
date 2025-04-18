@@ -6,7 +6,8 @@ plugins {
     id("io.github.sgtsilvio.gradle.maven-central-publishing") version "0.4.0"
 }
 
-String version = System.getenv("GITHUB_REF")?.substringAfterLast('/')?.removePrefix("v") ?: p_version
+def ref = System.getenv("GITHUB_REF")
+def version = (ref != null && ref.startsWith("refs/tags/")) ? ref.tokenize('/').last().replaceFirst(/^v/, '') : p_version
 
 repositories {
     mavenCentral()
