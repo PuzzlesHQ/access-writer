@@ -85,6 +85,11 @@ publishing {
     }
 }
 
+signing {
+    useGpgCmd()
+    sign(publishing.publications[0])
+}
+
 wrapper {
     gradleVersion = "8.5"
     distributionType = Wrapper.DistributionType.ALL
