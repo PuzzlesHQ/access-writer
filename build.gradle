@@ -50,6 +50,7 @@ publishing {
         maven(MavenPublication) {
             groupId = p_group
             artifactId = p_id
+            version = this.version
 
             from components.java
 
