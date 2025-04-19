@@ -3,7 +3,7 @@ import java.lang.reflect.Field
 plugins {
     id 'java'
     id 'maven-publish'
-    //id("io.github.sgtsilvio.gradle.maven-central-publishing") version "0.4.0"
+    id("io.github.sgtsilvio.gradle.maven-central-publishing") version "0.4.0"
 }
 
 def ref = System.getenv("GITHUB_REF")
@@ -34,7 +34,7 @@ dependencies {
 publishing {
     repositories {
         maven {
-            name = "myTestRepository"
+            name = "PuzzleHQsMaven"
             url = mavenUrl+ "/" +mavenRepo
             credentials {
                 username = System.getenv("MAVEN_NAME")
@@ -45,54 +45,45 @@ publishing {
             }
         }
     }
+
     publications {
         maven(MavenPublication) {
             groupId = p_group
             artifactId = p_id
             version = githubVersion
+
             from components.java
+
+            pom {
+                name = p_name
+                description = p_desc
+                url = p_git
+
+                licenses {
+                    license {
+                        name = "GNU Lesser General Public License"
+                        url = "https://www.gnu.org/licenses/lgpl-2.1.html"
+                        distribution = "LGPL"
+                        comments = "This project includes LGPL-licensed components."
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'mrzombii'
+                        name = 'Mr Zombii'
+                        email = 'thezombiigames@gmail.com'
+                    }
+                }
+                scm {
+                    connection = "${p_git}.git"
+                    developerConnection = "${p_git}.git"
+                    url = "${p_git}.git"
+                }
+            }
         }
     }
 }
-
-//publishing {
-//    publications {
-//        maven(MavenPublication) {
-//            groupId = p_group
-//            artifactId = p_id
-//
-//            from components.java
-//
-//            pom {
-//                name = p_name
-//                description = p_desc
-//                url = p_git
-//
-//                licenses {
-//                    license {
-//                        name = "GNU Lesser General Public License"
-//                        url = "https://www.gnu.org/licenses/lgpl-2.1.html"
-//                        distribution = "LGPL"
-//                        comments = "This project includes LGPL-licensed components."
-//                    }
-//                }
-//
-//                developers {
-//                    developer {
-//                        id = 'mrzombii'
-//                        name = 'Mr Zombii'
-//                        email = 'thezombiigames@gmail.com'
-//                    }
-//                }
-//                scm {
-//                    connection = "${p_git}.git"
-//                    developerConnection = "${p_git}.git"
-//                    url = "${p_git}.git"
-//                }
-//            }
-//        }
-//    }
-//}
 
 wrapper {
     gradleVersion = "8.5"
