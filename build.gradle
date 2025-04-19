@@ -7,7 +7,7 @@ plugins {
 }
 
 def ref = System.getenv("GITHUB_REF")
-def githubVersion = (ref != null && ref.startsWith("refs/tags/")) ? ref.tokenize('/').last().replaceFirst(/^v/, '') : p_version
+version = (ref != null && ref.startsWith("refs/tags/")) ? ref.tokenize('/').last().replaceFirst(/^v/, '') : p_version
 
 String mavenUrl = System.getenv("MAVEN_URL")
 
@@ -50,7 +50,6 @@ publishing {
         maven(MavenPublication) {
             groupId = p_group
             artifactId = p_id
-            version = githubVersion
 
             from components.java
 
