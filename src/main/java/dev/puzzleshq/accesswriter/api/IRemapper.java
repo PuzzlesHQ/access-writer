@@ -1,11 +1,16 @@
 package dev.puzzleshq.accesswriter.api;
 
+import dev.puzzlehq.annotation.documentation.Documented;
+import dev.puzzlehq.annotation.stability.Stable;
+
 /**
  * An interface service to remap classes from deobfuscated to obfuscated namings.
  *
  * @since 1.0.0
  * @author Mr-Zombii
  */
+@Stable
+@Documented
 public interface IRemapper {
 
     /**

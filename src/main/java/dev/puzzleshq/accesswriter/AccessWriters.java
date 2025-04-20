@@ -1,5 +1,7 @@
 package dev.puzzleshq.accesswriter;
 
+import dev.puzzlehq.annotation.documentation.Documented;
+import dev.puzzlehq.annotation.stability.Stable;
 import dev.puzzleshq.accesswriter.api.IWriterFormat;
 import dev.puzzleshq.accesswriter.api.IRemapper;
 import dev.puzzleshq.accesswriter.api.impl.format.AccessManipulatorFormat;
@@ -17,6 +19,8 @@ import java.util.Map;
  * @since 1.0.0
  * @author Mr-Zombii
  */
+@Stable
+@Documented
 public class AccessWriters {
 
     public static final MergedManipulationFile MERGED = new MergedManipulationFile();

@@ -16,6 +16,7 @@ String mavenRepo = envRepo != null ? envRepo : "releases";
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 java {
@@ -29,6 +30,8 @@ dependencies {
     implementation "org.ow2.asm:asm-util:$asm_version"
     implementation "org.ow2.asm:asm-analysis:$asm_version"
     implementation "org.ow2.asm:asm-commons:$asm_version"
+
+    implementation "dev.puzzleshq:puzzle-annotations:$puzzle_annotations"
 }
 
 publishing {

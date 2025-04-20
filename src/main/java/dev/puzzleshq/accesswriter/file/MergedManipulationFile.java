@@ -1,11 +1,16 @@
 package dev.puzzleshq.accesswriter.file;
 
+import dev.puzzlehq.annotation.documentation.Documented;
+import dev.puzzlehq.annotation.stability.Stable;
+
 /**
  * Combines all the ManipulationFile.
  *
  * @since 1.0.0
  * @author Mr-Zombii
  */
+@Stable
+@Documented
 public class MergedManipulationFile extends ManipulationFile {
 
     public MergedManipulationFile() {

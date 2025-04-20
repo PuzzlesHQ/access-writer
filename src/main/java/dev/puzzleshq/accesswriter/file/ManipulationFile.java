@@ -1,5 +1,8 @@
 package dev.puzzleshq.accesswriter.file;
 
+import dev.puzzlehq.annotation.Internal;
+import dev.puzzlehq.annotation.documentation.Documented;
+import dev.puzzlehq.annotation.stability.Stable;
 import dev.puzzleshq.accesswriter.AccessWriters;
 import dev.puzzleshq.accesswriter.api.IWriterFormat;
 import dev.puzzleshq.accesswriter.util.ClassAccess;
@@ -13,6 +16,8 @@ import java.util.Map;
  * @since 1.0.0
  * @author Mr-Zombii
  */
+@Stable
+@Documented
 public class ManipulationFile {
 
     IWriterFormat format;
@@ -31,10 +36,13 @@ public class ManipulationFile {
     }
 
     /* class, modifier */
+    @Internal
     Map<String, ClassAccess> classModificationMap = new HashMap<>();
     /* class~field, modifier> */
+    @Internal
     Map<String, ClassAccess> fieldModificationMap = new HashMap<>();
     /* class~descriptor~method, modifier> */
+    @Internal
     Map<String, ClassAccess> methodModificationMap = new HashMap<>();
 
     /**
@@ -142,6 +150,7 @@ public class ManipulationFile {
         return file;
     }
 
+    @Internal
     private static String getExt(String name) {
         String[] parts = name.split("\\.");
         return "." + parts[parts.length - 1];

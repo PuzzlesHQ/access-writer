@@ -1,7 +1,9 @@
 package dev.puzzleshq.accesswriter.util;
 
+import dev.puzzlehq.annotation.stability.Stable;
 import org.objectweb.asm.Opcodes;
 
+@Stable
 public record ClassAccess(
         int access,
         int... incompatible

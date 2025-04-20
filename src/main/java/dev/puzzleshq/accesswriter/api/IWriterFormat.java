@@ -1,5 +1,7 @@
 package dev.puzzleshq.accesswriter.api;
 
+import dev.puzzlehq.annotation.documentation.Documented;
+import dev.puzzlehq.annotation.stability.Stable;
 import dev.puzzleshq.accesswriter.file.ManipulationFile;
 
 /**
@@ -8,6 +10,8 @@ import dev.puzzleshq.accesswriter.file.ManipulationFile;
  * @since 1.0.0
  * @author Mr-Zombii
  */
+@Stable
+@Documented
 public interface IWriterFormat {
 
     /**
