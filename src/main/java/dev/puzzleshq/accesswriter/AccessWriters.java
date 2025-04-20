@@ -1,5 +1,6 @@
 package dev.puzzleshq.accesswriter;
 
+import dev.puzzlehq.annotation.Internal;
 import dev.puzzlehq.annotation.documentation.Documented;
 import dev.puzzlehq.annotation.stability.Stable;
 import dev.puzzleshq.accesswriter.api.IWriterFormat;
@@ -25,8 +26,10 @@ public class AccessWriters {
 
     public static final MergedManipulationFile MERGED = new MergedManipulationFile();
 
+    @Internal
     private static IRemapper remapper = new NullRemapper();
 
+    @Internal
     private static final Map<String, IWriterFormat> formatMap = new HashMap<>();
 
     /**
