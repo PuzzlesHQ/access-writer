@@ -1,6 +1,12 @@
 # Idea Folder
 /.idea
 
-# mainSrc
-/.gradle
+# Build
 /build
+
+# Gradle
+/.gradle
+/gradle/wrapper/gradle-wrapper.jar
+
+/gradlew
+/gradlew.bat
