@@ -3,6 +3,9 @@ package dev.puzzleshq.accesswriter.util;
 import dev.puzzlehq.annotation.stability.Stable;
 import org.objectweb.asm.Opcodes;
 
+import java.lang.reflect.AccessFlag;
+import java.util.Set;
+
 @Stable
 public record ClassAccess(
         int access,
@@ -42,5 +45,12 @@ public record ClassAccess(
         int acc = i;
         for (int n : incompatible) acc &= (~n);
         return acc | access;
+    }
+
+    public Set<AccessFlag> apply(Set<AccessFlag> flags, AccessFlag.Location location) {
+        int incompatMask = 1;
+        for (int n : incompatible) incompatMask |= n;
+        flags.removeAll(AccessFlag.maskToAccessFlags(incompatMask, location));
+        return flags;
     }
 }
