@@ -1,7 +1,7 @@
 package dev.puzzleshq.accesswriter.api.impl.remapping;
 
-import dev.puzzlehq.annotation.Internal;
-import dev.puzzlehq.annotation.stability.Stable;
+import dev.puzzleshq.annotation.Internal;
+import dev.puzzleshq.annotation.stability.Stable;
 import dev.puzzleshq.accesswriter.api.IRemapper;
 
 @Stable

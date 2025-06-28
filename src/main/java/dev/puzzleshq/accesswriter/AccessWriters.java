@@ -1,8 +1,8 @@
 package dev.puzzleshq.accesswriter;
 
-import dev.puzzlehq.annotation.Internal;
-import dev.puzzlehq.annotation.documentation.Documented;
-import dev.puzzlehq.annotation.stability.Stable;
+import dev.puzzleshq.annotation.Internal;
+import dev.puzzleshq.annotation.documentation.Documented;
+import dev.puzzleshq.annotation.stability.Stable;
 import dev.puzzleshq.accesswriter.api.IWriterFormat;
 import dev.puzzleshq.accesswriter.api.IRemapper;
 import dev.puzzleshq.accesswriter.api.impl.format.AccessManipulatorFormat;

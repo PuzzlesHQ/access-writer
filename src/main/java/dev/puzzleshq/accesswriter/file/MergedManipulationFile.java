@@ -1,7 +1,7 @@
 package dev.puzzleshq.accesswriter.file;
 
-import dev.puzzlehq.annotation.documentation.Documented;
-import dev.puzzlehq.annotation.stability.Stable;
+import dev.puzzleshq.annotation.documentation.Documented;
+import dev.puzzleshq.annotation.stability.Stable;
 
 /**
  * Combines all the ManipulationFile.

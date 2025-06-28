@@ -1,6 +1,6 @@
 package dev.puzzleshq.accesswriter.util;
 
-import dev.puzzlehq.annotation.stability.Stable;
+import dev.puzzleshq.annotation.stability.Stable;
 import org.objectweb.asm.Opcodes;
 
 import java.lang.reflect.AccessFlag;

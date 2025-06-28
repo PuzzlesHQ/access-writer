@@ -1,6 +1,6 @@
 package dev.puzzleshq.accesswriter.transformers;
 
-import dev.puzzlehq.annotation.stability.Stable;
+import dev.puzzleshq.annotation.stability.Stable;
 import dev.puzzleshq.accesswriter.AccessWriters;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
