@@ -88,10 +88,10 @@ publishing {
     }
 }
 
-//signing {
-//    useGpgCmd()
-//    sign(publishing.publications[0])
-//}
+signing {
+    useGpgCmd()
+    sign(publishing.publications[0])
+}
 
 wrapper {
     gradleVersion = "8.5"
