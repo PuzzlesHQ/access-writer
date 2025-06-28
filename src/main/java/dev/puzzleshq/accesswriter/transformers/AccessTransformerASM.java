@@ -1,5 +1,6 @@
 package dev.puzzleshq.accesswriter.transformers;
 
+import dev.puzzleshq.annotation.documentation.NeedsDocumentation;
 import dev.puzzleshq.annotation.stability.Stable;
 import dev.puzzleshq.accesswriter.AccessWriters;
 import org.objectweb.asm.ClassVisitor;
@@ -8,6 +9,7 @@ import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
 @Stable
+@NeedsDocumentation
 public class AccessTransformerASM extends ClassVisitor {
 
     String className;

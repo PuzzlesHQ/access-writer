@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * The main class that contains all you need to configure AccessWriters.
+ *
  * @since 1.0.0
  * @author Mr-Zombii
  */
@@ -24,6 +26,9 @@ import java.util.Map;
 @Documented
 public class AccessWriters {
 
+    /**
+     * The merged form of all access writers which is edited and used during runtime.
+     */
     public static final MergedManipulationFile MERGED = new MergedManipulationFile();
 
     @Internal

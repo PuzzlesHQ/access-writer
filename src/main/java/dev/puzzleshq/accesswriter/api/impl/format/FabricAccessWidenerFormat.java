@@ -9,6 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * An internal class that parses the AccessWidener format that was created by FabricMc
+ * <br>
+ * <br>
+ * <strong>Resources</strong>
+ * <br>
+ * <ul>
+ *     <a href="https://wiki.fabricmc.net/tutorial:accesswideners">Format documentation</a>
+ * </ul>
+ *
+ * @since 1.0.0
+ * @author Mr-Zombii
+ */
 @Stable
 @Internal
 public class FabricAccessWidenerFormat implements IWriterFormat {
@@ -25,7 +38,7 @@ public class FabricAccessWidenerFormat implements IWriterFormat {
         while (scanner.hasNextLine()) lines.add(scanner.nextLine());
 
         for (String line : lines) {
-            if (line.isBlank() || line.startsWith("#") || line.startsWith("accessWidener")) continue;
+            if (line.replaceAll("[ \r\n]", "").isEmpty() || line.startsWith("#") || line.startsWith("accessWidener")) continue;
 
             String[] parts = line.split(" ");
 
@@ -58,12 +71,16 @@ public class FabricAccessWidenerFormat implements IWriterFormat {
     }
 
     private String toGenericModifier(String modifier) {
-        return switch (modifier) {
-            case "accessible" -> "public";
-            case "extendable" -> "protected-f";
-            case "mutable" -> "public-f";
-            default -> throw new RuntimeException("Unsupported access: '" + modifier + "'");
-        };
+        switch (modifier) {
+            case "accessible":
+                return "public";
+            case "extendable":
+                return "protected-f";
+            case "mutable":
+                return "public-f";
+            default:
+                throw new RuntimeException("Unsupported access: '" + modifier + "'");
+        }
     }
 
     @Override

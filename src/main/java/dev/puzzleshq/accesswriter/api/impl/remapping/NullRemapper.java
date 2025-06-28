@@ -4,6 +4,9 @@ import dev.puzzleshq.annotation.Internal;
 import dev.puzzleshq.annotation.stability.Stable;
 import dev.puzzleshq.accesswriter.api.IRemapper;
 
+/**
+ * An internal class of which returns what is put in it.
+ */
 @Stable
 @Internal
 public class NullRemapper implements IRemapper {

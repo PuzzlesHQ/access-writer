@@ -9,6 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * An internal class that parses the AccessTransformer format that was created by MinecraftForge
+ * <br>
+ * <br>
+ * <strong>Resources</strong>
+ * <br>
+ * <ul>
+ *     <a href="https://docs.minecraftforge.net/en/latest/advanced/accesstransformers/">Format documentation</a>
+ * </ul>
+ *
+ * @since 1.0.0
+ * @author Mr-Zombii
+ */
 @Stable
 @Internal
 public class ForgeAccessTransformerFormat implements IWriterFormat {
@@ -25,7 +38,7 @@ public class ForgeAccessTransformerFormat implements IWriterFormat {
         while (scanner.hasNextLine()) lines.add(scanner.nextLine());
 
         for (String line : lines) {
-            if (line.isBlank() || line.startsWith("#")) continue;
+            if (line.replaceAll("[ \r\n]", "").isEmpty() || line.startsWith("#")) continue;
 
             String[] parts = line.split(" ");
 

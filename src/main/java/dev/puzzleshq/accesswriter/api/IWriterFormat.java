@@ -15,14 +15,17 @@ import dev.puzzleshq.accesswriter.file.ManipulationFile;
 public interface IWriterFormat {
 
     /**
-     * @param contents The contents of a manipulator file that are to be parsed.
+     * Parses contents into a manipulation file.
      *
+     * @param contents The contents of a manipulator file that are to be parsed.
      * @return {@link ManipulationFile}
      */
     ManipulationFile parse(String contents);
 
     /**
-     * @return Name of implemented format.
+     * Gets and returns the name of whatever custom format implemented this interface.
+     *
+     * @return the name of format.
      */
     String name();
 

@@ -1,6 +1,7 @@
 package dev.puzzleshq.accesswriter.api.impl.format;
 
 import dev.puzzleshq.annotation.Internal;
+import dev.puzzleshq.annotation.documentation.Documented;
 import dev.puzzleshq.annotation.stability.Stable;
 import dev.puzzleshq.accesswriter.file.ManipulationFile;
 import dev.puzzleshq.accesswriter.api.IWriterFormat;
@@ -9,8 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * An internal class that parses the AccessManipulator format of which was made by PuzzlesHQ
+ * <br>
+ * <br>
+ * <strong>Resources</strong>
+ * <br>
+ * <ul>
+ *     <a href="https://github.com/PuzzlesHQ/access-writer/blob/main/docs/access_manipulator.md">Format documentation</a>
+ * </ul>
+ *
+ * @since 1.0.0
+ * @author Mr-Zombii
+ */
 @Stable
 @Internal
+@Documented
 public class AccessManipulatorFormat implements IWriterFormat {
 
     ManipulationFile file;
@@ -25,7 +40,7 @@ public class AccessManipulatorFormat implements IWriterFormat {
         while (scanner.hasNextLine()) lines.add(scanner.nextLine());
 
         for (String line : lines) {
-            if (line.isEmpty() || line.startsWith("#")) continue;
+            if (line.replaceAll("[ \r\n]", "").isEmpty() || line.startsWith("#")) continue;
 
             String[] parts = line.split(" ");
 

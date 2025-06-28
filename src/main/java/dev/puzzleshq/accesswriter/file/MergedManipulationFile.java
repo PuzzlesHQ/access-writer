@@ -13,6 +13,9 @@ import dev.puzzleshq.annotation.stability.Stable;
 @Documented
 public class MergedManipulationFile extends ManipulationFile {
 
+    /**
+     * An empty constructor made for merging other files, leaving it format-less.
+     */
     public MergedManipulationFile() {
         super(null);
     }

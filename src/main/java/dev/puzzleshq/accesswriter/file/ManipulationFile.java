@@ -22,6 +22,10 @@ public class ManipulationFile {
 
     IWriterFormat format;
 
+    /**
+     * The default constructor for a manipulator file.
+     * @param format The format used to make this file.
+     */
     public ManipulationFile(IWriterFormat format) {
         this.format = format;
     }
@@ -142,6 +146,8 @@ public class ManipulationFile {
      * @param merge tick for the optional auto merging with the AccessWriters.MERGED manipulator.
      *
      * @see MergedManipulationFile
+     *
+     * @return {@link ManipulationFile}
      */
     public static ManipulationFile readFromString(String contents, String name, boolean merge) {
         IWriterFormat format = AccessWriters.getFormat(getExt(name));
