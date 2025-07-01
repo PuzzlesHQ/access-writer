@@ -10,7 +10,7 @@ env:
 jobs:
   publish-release: 
     if: ${{ github.event.action == 'published' && vars.TEST != 'true' }} 
-    uses: PuzzlesHQ/Puzzles-Workflows/.github/workflows/maven-central-publishing.yml@main
+    uses: PuzzlesHQ/Puzzles-Workflows/.github/workflows/maven-publishing.yml@main
     secrets: inherit
     with:
       group-id: ${{ vars.GROUP_ID }}
