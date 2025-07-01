@@ -14,5 +14,3 @@ jobs:
     secrets: inherit
     with:
       TAG_NAME: ${{ github.event.release.tag_name }}
-      group-id: ${{ vars.GROUP_ID }}
-      artifact-id: ${{ vars.ARTIFACT_ID }}
