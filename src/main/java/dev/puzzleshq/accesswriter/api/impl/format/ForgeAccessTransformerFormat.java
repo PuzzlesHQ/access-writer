@@ -59,12 +59,15 @@ public class ForgeAccessTransformerFormat implements IWriterFormat {
             case "class":
                 if (parts.length != 2) throw new IllegalArgumentException("Wrong argument for a class modifier, it must be in similar to \"<modifier> <full-class-name>\"");
                 file.add(modifier, parts[1].replaceAll("\\.", "/"));
+                break;
             case "field":
                 if (parts.length != 3) throw new IllegalArgumentException("Wrong argument for a field modifier, it must be in similar to \"<modifier> <full-class-name> <field-name>\"");
                 file.add(modifier, parts[1].replaceAll("\\.", "/"), parts[2]);
+                break;
             case "method":
                 if (parts.length != 4) throw new IllegalArgumentException("Wrong argument for a method modifier, it must be in similar to \"<modifier> <full-class-name> <method-name> <method-descriptor>\"");
                 file.add(modifier, parts[1].replaceAll("\\.", "/"), parts[2], parts[3]);
+                break;
             default:
                 throw new RuntimeException("Unknown Token \"" + type + "\".");
         }

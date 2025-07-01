@@ -59,12 +59,15 @@ public class FabricAccessWidenerFormat implements IWriterFormat {
             case "class":
                 if (parts.length != 3) throw new IllegalArgumentException("Wrong argument for a class modifier, it must be in similar to \"<modifier> class <full-class-name>\"");
                 file.add(toGenericModifier(modifier), parts[2].replaceAll("\\.", "/"));
+                break;
             case "field":
                 if (parts.length != 5) throw new IllegalArgumentException("Wrong argument for a field modifier, it must be in similar to \"<modifier> field <full-class-name> <field-name>\"");
                 file.add(toGenericModifier(modifier), parts[2].replaceAll("\\.", "/"), parts[3]);
+                break;
             case "method":
                 if (parts.length != 5) throw new IllegalArgumentException("Wrong argument for a method modifier, it must be in similar to \"<modifier> field <full-class-name> <method-name> <method-descriptor>\"");
                 file.add(toGenericModifier(modifier), parts[2].replaceAll("\\.", "/"), parts[3], parts[4]);
+                break;
             default:
                 throw new RuntimeException("Unknown Token \"" + type + "\".");
         }
